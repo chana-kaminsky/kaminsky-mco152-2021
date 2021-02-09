@@ -1,3 +1,5 @@
+package kaminsky.scrabble;
+
 import java.util.*;
 import java.io.*;
 
