@@ -25,6 +25,10 @@ public class Scrabble
     {
         return words;
     }
+    public ArrayList<String> getDictionary()
+    {
+        return dictionary;
+    }
 
     /**
      *
