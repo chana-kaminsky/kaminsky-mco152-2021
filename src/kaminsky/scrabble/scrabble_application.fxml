@@ -28,18 +28,12 @@
     <TextField fx:id="wordField"
                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-    <Button text="Add Word" onAction="#addWord"
+    <Button text="Search Word" onAction="#searchWord"
             GridPane.rowIndex="2"/>
 
-    <Label fx:id="boardLabel" text="Scrabble Board:"
-           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-
-    <Button text="Make Board" onAction="#newBoard"
-            GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-
-    <Label fx:id="errorMessageLabel"
-           GridPane.columnIndex="0" GridPane.rowIndex="3">
-            <font><Font size="15"/></font>
+    <Label fx:id="messageLabel" GridPane.columnIndex="0"
+           GridPane.rowIndex="3" GridPane.columnSpan="2">
+            <font><Font size="14"/></font>
     </Label>
 
 </GridPane>

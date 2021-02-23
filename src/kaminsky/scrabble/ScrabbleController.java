@@ -13,47 +13,30 @@ public class ScrabbleController
     @FXML
     TextField wordField;
     @FXML
-    Label boardLabel;
-    @FXML
-    Label errorMessageLabel;
+    Label messageLabel;
     @FXML
     TextField filenameField;
 
-    public void addWord(ActionEvent actionEvent)
+    public void searchWord(ActionEvent actionEvent)
     {
-        if (ScrabbleApplication.board.getDictionary().isEmpty())
+        Scrabble dictionary = new Scrabble(filenameField.getText());
+        if (dictionary.getDictionary().isEmpty())
         {
-            errorMessageLabel.setText("Error: no board");
+            messageLabel.setText("Error: file not found");
         }
         else
         {
-            if (ScrabbleApplication.board.search(wordField.getText()))
+            if (dictionary.search(wordField.getText()))
             {
-                errorMessageLabel.setText("");
-
-                ArrayList<String> boardWords = ScrabbleApplication.board.getWords();
-                boardLabel.setText(boardLabel.getText() + "\n" + boardWords.get(boardWords.size()-1));
+                messageLabel.setText("");
+                messageLabel.setText(wordField.getText() + " was found in the dictionary!");
             }
             else
             {
-                errorMessageLabel.setText("Sorry, that is not a word");
+                messageLabel.setText("Sorry, that is not a word");
             }
         }
-        wordField.setText("");
+        wordField.clear();
     }
 
-    public void newBoard()
-    {
-        boardLabel.setText("Scrabble Board:");
-        ScrabbleApplication.board = new Scrabble(filenameField.getText());
-
-        if (ScrabbleApplication.board.getDictionary().isEmpty())
-        {
-            errorMessageLabel.setText("Error: file not found");
-        }
-        else
-        {
-            errorMessageLabel.setText("");
-        }
-    }
 }

@@ -48,5 +48,4 @@ public class Rocket
         double time = yVelocity / (0.5 * GRAVITY);
         return time;
     }
-
 }

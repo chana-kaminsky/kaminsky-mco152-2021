@@ -9,22 +9,16 @@ import java.io.*;
 public class Scrabble
 {
     private final ArrayList<String> dictionary;
-    private final ArrayList<String> words;
 
     public Scrabble(String filename)
     {
-        this.words = new ArrayList<>();
         this.dictionary = readFile(filename);
     }
 
     /**
      *
-     * @return words
+     * @return dictionary
      */
-    public ArrayList<String> getWords()
-    {
-        return words;
-    }
     public ArrayList<String> getDictionary()
     {
         return dictionary;
@@ -46,12 +40,12 @@ public class Scrabble
             {
                 String word = readFile.next();
                 readFile.nextLine();
-                dictionary.add(word);
+                dictionary.add(word.toUpperCase());
             }
         }
         catch (Exception exception)
         {
-            System.out.println(exception);
+            exception.printStackTrace();
         }
         Collections.sort(dictionary);
         return dictionary;
@@ -59,22 +53,13 @@ public class Scrabble
 
     /**
      *
-     * @param word that is added to the board if it exists in the dictionary
-     * @return true if the word exists and is successfully added to the board,
-     * and false if the word does not exist
+     * @param word to search the dictionary for
+     * @return true if the word exists in the dictionary
+     * and false if it does not
      */
     public boolean search(String word)
     {
-        Object[] dictArray = dictionary.toArray();
-        int binarySearch = Arrays.binarySearch(dictArray, word.toUpperCase());
-        if (binarySearch > 0)
-        {
-            words.add(word);
-        }
-        else
-        {
-            return false;
-        }
-        return true;
+        String[] dictArray = dictionary.toArray(new String[0]);
+        return Arrays.binarySearch(dictArray, word.toUpperCase()) > 0;
     }
 }
