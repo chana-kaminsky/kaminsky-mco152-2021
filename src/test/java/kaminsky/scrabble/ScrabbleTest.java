@@ -77,4 +77,31 @@ public class ScrabbleTest {
         //then
         Assert.assertFalse(isInDictionary);
     }
+
+    @Test
+    public void getDefinitionOfWord()
+    {
+        //given
+        String filename = "dictionary.txt";
+        Scrabble dictionary = new Scrabble(filename);
+
+        //when
+
+        //then
+        Assert.assertEquals("<pinecone=n> [n]", dictionary.getDefinition("pinecones"));
+    }
+
+    @Test
+    public void getDefinitionNoWord()
+    {
+        //given
+        String filename = "dictionary.txt";
+        Scrabble dictionary = new Scrabble(filename);
+
+        //when
+
+        //then
+        Assert.assertEquals("", dictionary.getDefinition("abcd"));
+    }
+
 }

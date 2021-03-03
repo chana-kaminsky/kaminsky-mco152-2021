@@ -20,7 +20,7 @@ public class ScrabbleController
     public void searchWord(ActionEvent actionEvent)
     {
         Scrabble dictionary = new Scrabble(filenameField.getText());
-        if (dictionary.getDictionary().isEmpty())
+        if (dictionary.getWordsToDefinitions().isEmpty())
         {
             messageLabel.setText("Error: file not found");
         }

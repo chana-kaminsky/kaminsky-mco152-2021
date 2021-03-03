@@ -34,10 +34,10 @@ public class RocketController
            double seconds = Double.parseDouble(secondsField.getText());
 
            Rocket rocket = new Rocket(velocity, angle);
-           // three decimal places
-           flightTimeLabel.setText(String.format("%.3f", rocket.getFlightTime()));
-           xLabel.setText(String.format("%.3f", rocket.getX(seconds)));
-           yLabel.setText(String.format("%.3f", rocket.getY(seconds)));
+           // two decimal places
+           flightTimeLabel.setText(String.format("%.2f", rocket.getFlightTime()));
+           xLabel.setText(String.format("%.2f", rocket.getX(seconds)));
+           yLabel.setText(String.format("%.2f", rocket.getY(seconds)));
 
            rocketCanvas.draw(rocket);
        }

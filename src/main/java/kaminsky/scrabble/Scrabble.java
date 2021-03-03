@@ -8,20 +8,15 @@ import java.io.*;
  */
 public class Scrabble
 {
-    private final ArrayList<String> dictionary;
+    private Map<String, String> wordsToDefinitions = new HashMap<>();
 
     public Scrabble(String filename)
     {
-        this.dictionary = readFile(filename);
+        this.wordsToDefinitions = readFile(filename);
     }
 
-    /**
-     *
-     * @return dictionary
-     */
-    public ArrayList<String> getDictionary()
-    {
-        return dictionary;
+    public Map<String, String> getWordsToDefinitions() {
+        return wordsToDefinitions;
     }
 
     /**
@@ -29,26 +24,25 @@ public class Scrabble
      * @param filename of a file containing a dictionary
      * @return a sorted ArrayList of all the words in the dictionary
      */
-    private ArrayList<String> readFile(String filename)
+    private Map<String, String> readFile(String filename)
     {
-        ArrayList<String> dictionary = new ArrayList<>();
         File file = new File(filename);
         try
         {
             Scanner readFile = new Scanner(file);
             while (readFile.hasNextLine())
             {
-                String word = readFile.next();
-                readFile.nextLine();
-                dictionary.add(word.toUpperCase());
+                wordsToDefinitions.put(
+                        readFile.next(), //key
+                        readFile.nextLine().trim()//value
+                );
             }
         }
         catch (Exception exception)
         {
             exception.printStackTrace();
         }
-        Collections.sort(dictionary);
-        return dictionary;
+        return wordsToDefinitions;
     }
 
     /**
@@ -59,7 +53,17 @@ public class Scrabble
      */
     public boolean search(String word)
     {
-        String[] dictArray = dictionary.toArray(new String[0]);
-        return Arrays.binarySearch(dictArray, word.toUpperCase()) > 0;
+        return wordsToDefinitions.containsKey(word.toUpperCase());
+    }
+
+    public String getDefinition(String word)
+    {
+        String definition = wordsToDefinitions.get(word.toUpperCase());
+        return definition == null ? "" : definition;
+    }
+
+    public int size()
+    {
+        return wordsToDefinitions.size();
     }
 }
