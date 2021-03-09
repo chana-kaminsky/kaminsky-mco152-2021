@@ -6,14 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ScrabbleApplication extends Application
+public class DictionaryApplication extends Application
 {
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception
+    {
+        Parent root = FXMLLoader.load(getClass().getResource("/dictionary_application.fxml"));
+        Scene scene = new Scene(root, 450, 250);
 
-        Parent root = FXMLLoader.load(getClass().getResource("/scrabble_application.fxml"));
-        Scene scene = new Scene(root, 500, 300);
-
-        stage.setTitle("Scrabble Game");
+        stage.setTitle("Dictionary");
         stage.setScene(scene);
         stage.show();
     }
@@ -23,3 +23,5 @@ public class ScrabbleApplication extends Application
         launch(args);
     }
 }
+
+

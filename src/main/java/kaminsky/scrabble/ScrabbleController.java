@@ -2,41 +2,65 @@ package kaminsky.scrabble;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
+import javafx.scene.layout.*;
 
 public class ScrabbleController
 {
     @FXML
-    TextField wordField;
-    @FXML
-    Label messageLabel;
-    @FXML
-    TextField filenameField;
+    Label top0Label, top1Label, top2Label,
+          top3Label, top4Label, top5Label, top6Label;
 
-    public void searchWord(ActionEvent actionEvent)
+    @FXML
+    Label bottom0Label, bottom1Label, bottom2Label,
+          bottom3Label, bottom4Label, bottom5Label, bottom6Label;
+
+
+    public void initialize()
     {
-        Scrabble dictionary = new Scrabble(filenameField.getText());
-        if (dictionary.getWordsToDefinitions().isEmpty())
-        {
-            messageLabel.setText("Error: file not found");
-        }
-        else
-        {
-            if (dictionary.search(wordField.getText()))
-            {
-                messageLabel.setText("");
-                messageLabel.setText(wordField.getText() + " was found in the dictionary!");
-            }
-            else
-            {
-                messageLabel.setText("Sorry, that is not a word");
-            }
-        }
-        wordField.clear();
+        setTopLabels();
+        setBottomLabels();
     }
 
+    private void setTopLabels()
+    {
+        Label[] labelList = {top0Label, top1Label, top2Label,
+                             top3Label,top4Label, top5Label, top6Label};
+
+        for (int i = 0; i < labelList.length; i++)
+        {
+            labelList[i].setMinWidth(50);
+            labelList[i].setMinHeight(50);
+
+            GridPane.setColumnIndex(labelList[i], i);
+            GridPane.setRowIndex(labelList[i], 0);
+
+            BorderStroke stroke = new BorderStroke(null,
+                                  BorderStrokeStyle.SOLID,
+                             null, BorderStroke.THIN);
+            Border border = new Border(stroke);
+            labelList[i].setBorder(border);
+        }
+    }
+
+    private void setBottomLabels()
+    {
+        Label[] labelList = {bottom0Label, bottom1Label, bottom2Label,
+                             bottom3Label, bottom4Label, bottom5Label, bottom6Label};
+
+        for (int i = 0; i < labelList.length; i++)
+        {
+            labelList[i].setMinWidth(50);
+            labelList[i].setMinHeight(50);
+
+            GridPane.setColumnIndex(labelList[i], i);
+            GridPane.setRowIndex(labelList[i], 2);
+
+            BorderStroke stroke = new BorderStroke(null,
+                                  BorderStrokeStyle.SOLID,
+                             null, BorderStroke.THIN);
+            Border border = new Border(stroke);
+            labelList[i].setBorder(border);
+        }
+    }
 }

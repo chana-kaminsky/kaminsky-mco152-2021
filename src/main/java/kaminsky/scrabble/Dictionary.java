@@ -6,11 +6,11 @@ import java.io.*;
 /**
  * Class to determine if words on a Scrabble board exist in a dictionary
  */
-public class Scrabble
+public class Dictionary
 {
     private Map<String, String> wordsToDefinitions = new HashMap<>();
 
-    public Scrabble(String filename)
+    public Dictionary(String filename)
     {
         this.wordsToDefinitions = readFile(filename);
     }

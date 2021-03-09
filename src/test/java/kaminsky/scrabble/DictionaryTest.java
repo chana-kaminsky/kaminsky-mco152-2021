@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 
-public class ScrabbleTest {
+public class DictionaryTest {
     @Test
     public void searchTrueUpper() throws FileNotFoundException
     {
@@ -13,7 +13,7 @@ public class ScrabbleTest {
         String filename = "dictionary.txt";
         //if the test passes, it means that the readFile method works,
         //because it's called in the constructor when the board is created
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
         boolean isInDictionary = dictionary.search("MANGO");
@@ -27,7 +27,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
         boolean isInDictionary = dictionary.search("strawberry");
@@ -41,7 +41,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
         boolean isInDictionary = dictionary.search("ASDFGHJKL");
@@ -55,7 +55,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
         boolean isInDictionary = dictionary.search("foo");
@@ -69,7 +69,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
         boolean isInDictionary = dictionary.search("1234");
@@ -83,7 +83,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
 
@@ -96,7 +96,7 @@ public class ScrabbleTest {
     {
         //given
         String filename = "dictionary.txt";
-        Scrabble dictionary = new Scrabble(filename);
+        Dictionary dictionary = new Dictionary(filename);
 
         //when
 
