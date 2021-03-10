@@ -2,19 +2,20 @@ package kaminsky.scrabble;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+
+import java.util.List;
 
 public class ScrabbleController
 {
     @FXML
-    Label top0Label, top1Label, top2Label,
-          top3Label, top4Label, top5Label, top6Label;
+    List<Label> topLabels;
 
     @FXML
-    Label bottom0Label, bottom1Label, bottom2Label,
-          bottom3Label, bottom4Label, bottom5Label, bottom6Label;
-
+    List<Label> bottomLabels;
 
     public void initialize()
     {
@@ -24,43 +25,61 @@ public class ScrabbleController
 
     private void setTopLabels()
     {
-        Label[] labelList = {top0Label, top1Label, top2Label,
-                             top3Label,top4Label, top5Label, top6Label};
-
-        for (int i = 0; i < labelList.length; i++)
+        for (int i = 0; i < topLabels.size(); i++)
         {
-            labelList[i].setMinWidth(50);
-            labelList[i].setMinHeight(50);
+            topLabels.get(i).setMinWidth(50);
+            topLabels.get(i).setMinHeight(50);
 
-            GridPane.setColumnIndex(labelList[i], i);
-            GridPane.setRowIndex(labelList[i], 0);
+            GridPane.setColumnIndex(topLabels.get(i), i);
+            GridPane.setRowIndex(topLabels.get(i), 0);
 
             BorderStroke stroke = new BorderStroke(null,
                                   BorderStrokeStyle.SOLID,
                              null, BorderStroke.THIN);
             Border border = new Border(stroke);
-            labelList[i].setBorder(border);
+            topLabels.get(i).setBorder(border);
         }
     }
 
     private void setBottomLabels()
     {
-        Label[] labelList = {bottom0Label, bottom1Label, bottom2Label,
-                             bottom3Label, bottom4Label, bottom5Label, bottom6Label};
-
-        for (int i = 0; i < labelList.length; i++)
+        for (int i = 0; i < bottomLabels.size(); i++)
         {
-            labelList[i].setMinWidth(50);
-            labelList[i].setMinHeight(50);
+            bottomLabels.get(i).setMinWidth(50);
+            bottomLabels.get(i).setMinHeight(50);
 
-            GridPane.setColumnIndex(labelList[i], i);
-            GridPane.setRowIndex(labelList[i], 2);
+            GridPane.setColumnIndex(bottomLabels.get(i), i);
+            GridPane.setRowIndex(bottomLabels.get(i), 2);
 
             BorderStroke stroke = new BorderStroke(null,
                                   BorderStrokeStyle.SOLID,
                              null, BorderStroke.THIN);
             Border border = new Border(stroke);
-            labelList[i].setBorder(border);
+            bottomLabels.get(i).setBorder(border);
+            bottomLabels.get(i).setAlignment(Pos.CENTER);
+            bottomLabels.get(i).setText(letterBag.nextLetter());
         }
+    }
+
+    LetterBag letterBag = new LetterBag();
+
+    public ScrabbleController()
+    {
+        Dictionary dictionary = new Dictionary("dictionary.txt");
+    }
+
+    public void onAnswerClicked(MouseEvent event)
+    {
+        Label label = (Label) event.getSource();
+    }
+
+    public void onClear(ActionEvent event)
+    {
+
+    }
+
+    public void onSubmit(ActionEvent event)
+    {
+
     }
 }
