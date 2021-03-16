@@ -1,7 +1,12 @@
 Label {
-/* for top and bottom labels
+    -fx-min-width:50;
+    -fx-min-height:50;
+    -fx-border-width:3;
+    -fx-border-color:black;
 }
 
 Label.points {
-/* for the points label
+    -fx-min-width:50;
+    -fx-min-height:50;
+    -fx-border-width:0;
 }

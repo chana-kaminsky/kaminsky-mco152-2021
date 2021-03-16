@@ -15,21 +15,34 @@
         <Insets top="30" right="25" bottom="10" left="25"/>
     </padding>
 
-    <Label fx:id="top0Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top1Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top2Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top3Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top4Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top5Label" onMouseClicked="#onAnswerClicked"/>
-    <Label fx:id="top6Label" onMouseClicked="#onAnswerClicked"/>
+    <Label fx:id="top0Label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <Label fx:id="top1Label" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <Label fx:id="top2Label" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <Label fx:id="top3Label" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <Label fx:id="top4Label" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <Label fx:id="top5Label" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+    <Label fx:id="top6Label" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
 
-    <Label fx:id="bottom0Label"/>
-    <Label fx:id="bottom1Label"/>
-    <Label fx:id="bottom2Label"/>
-    <Label fx:id="bottom3Label"/>
-    <Label fx:id="bottom4Label"/>
-    <Label fx:id="bottom5Label"/>
-    <Label fx:id="bottom6Label"/>
+    <Label fx:id="bottom0Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom1Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom2Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom3Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom4Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom5Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+
+    <Label fx:id="bottom6Label" onMouseClicked="#onBottomClicked"
+           GridPane.columnIndex="6" GridPane.rowIndex="2"/>
 
     <fx:define>
         <ArrayList fx:id="topLabels">
@@ -65,7 +78,8 @@
             GridPane.columnIndex="5"
             GridPane.rowIndex="1" />
 
-    <Label text="# Points"
+    <Label fx:id="points"
+           text="0"
            styleClass="points"
            GridPane.columnIndex="6"
            GridPane.rowIndex="1" />
