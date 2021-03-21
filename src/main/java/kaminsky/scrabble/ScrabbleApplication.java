@@ -8,10 +8,18 @@ import javafx.stage.Stage;
 
 public class ScrabbleApplication extends Application
 {
+    @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/scrabble_application.fxml"));
-        Scene scene = new Scene(root, 500, 300);
+        Dictionary dictionary = new Dictionary("dictionary.txt");
+        LetterBag letterBag = new LetterBag();
+        ScrabbleController controller = new ScrabbleController(dictionary, letterBag);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/scrabble_application.fxml"));
+        loader.setController(controller);
+
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent, 500, 300);
 
         stage.setTitle("Scrabble Game");
         stage.setScene(scene);

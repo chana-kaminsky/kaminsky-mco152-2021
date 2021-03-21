@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import kaminsky.physics.RocketCanvas?>
-<GridPane fx:controller="kaminsky.physics.RocketController"
+<GridPane
           xmlns:fx="http://javafx.com/fxml" alignment="top_center"
           hgap="10" vgap="10">
 
