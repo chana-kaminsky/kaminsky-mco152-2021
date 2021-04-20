@@ -1,5 +1,4 @@
-../kaminsky-mco152-2021-local/.idea/
-dictionary.txt
+.idea/
 out/
 .gradle/
 build/
