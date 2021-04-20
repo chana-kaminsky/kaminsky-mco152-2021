@@ -19,12 +19,9 @@ public class ScrabbleController
     @FXML
     Label points;
 
-    @FXML
-    Label invalid;
-
     private final Dictionary dictionary;
     private final LetterBag letterBag;
-    private int numPoints = 0;
+    int numPoints = 0;
 
     public ScrabbleController(Dictionary dictionary, LetterBag letterBag)
     {
@@ -44,7 +41,6 @@ public class ScrabbleController
     public void onBottomClicked(MouseEvent event)
     {
         Label label = (Label) event.getSource();
-        invalid.setText("");
         for (Label topLabel : topLabels)
         {
             if (topLabel.getText().isEmpty())
@@ -59,12 +55,12 @@ public class ScrabbleController
 
     public void onClear(ActionEvent event)
     {
-        invalid.setText("");
         for (Label topLabel : topLabels)
         {
             for (Label bottomLabel : bottomLabels)
             {
-                if (bottomLabel.getText().isEmpty())
+                if (bottomLabel.getText() != null &&
+                    bottomLabel.getText().isEmpty())
                 {
                     bottomLabel.setText(topLabel.getText());
                     topLabel.setText("");
@@ -92,26 +88,20 @@ public class ScrabbleController
         else
         {
             onClear(event);
-            invalid.setText("invalid word");
         }
     }
 
-    public int getNumLetters()
+    private int getNumLetters()
     {
         StringBuilder stringBuilder = new StringBuilder();
-        int numLetters = 0;
-        for (int i = 0; i < topLabels.size(); i++)
+        for (Label label : topLabels)
         {
-            if (!topLabels.get(i).getText().isEmpty())
+            if (!label.getText().isEmpty())
             {
-                stringBuilder.append(topLabels.get(i).getText());
-            }
-            else
-            {
-                numLetters = i;
-                break;
+                stringBuilder.append(label.getText());
             }
         }
+        int numLetters = stringBuilder.length();
         String word = stringBuilder.toString();
         if (!dictionary.search(word))
         {
@@ -120,7 +110,7 @@ public class ScrabbleController
         return numLetters;
     }
 
-    public void addPoints(int numLetters)
+    private void addPoints(int numLetters)
     {
         switch (numLetters)
         {
